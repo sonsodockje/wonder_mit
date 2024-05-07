@@ -4,7 +4,11 @@ export default function UserSimpleInfo() {
   const isLogin = useUserStore((state: any) => state.isLogin);
 
   if (!isLogin) {
-    return <div>로그인하세요</div>;
+    return (
+      <div className="p-5  bg-blue">
+        <p>로그인하세요</p>
+      </div>
+    );
   }
 
   const userDataString = localStorage.getItem("data");
@@ -13,10 +17,10 @@ export default function UserSimpleInfo() {
     const userData = JSON.parse(userDataString);
     // console.log(userData);
     return (
-      <>
+      <div className="p-5 bg-blue">
         <p>{userData.displayName} 님</p>
         <img src={userData.photoURL} alt="" />
-      </>
+      </div>
     );
   }
 }

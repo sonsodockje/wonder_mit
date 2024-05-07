@@ -1,9 +1,33 @@
-function Promo() {
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+
+export default function Promo() {
+  const data = [
+    {
+      name: "test",
+    },
+    {
+      name: "test2",
+    },
+  ];
+
   return (
-    <div>
-      <div className="h-40 bg-purple ">프로모</div>
+    <div className="max-w-lg bg-purple p-5 ">
+      <div className="">
+        <Swiper>
+          {data.map((data) => (
+            <SwiperSlide>
+              <PromoCard data={data} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 }
 
-export default Promo;
+function PromoCard({ data }: any) {
+  return <p>{data.name}</p>;
+}
+
+// https://swiperjs.com/react

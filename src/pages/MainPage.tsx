@@ -6,13 +6,9 @@ import UserSimpleInfo from "../components/main/UserSimpleInfo";
 function MainPage() {
   return (
     <div>
-      <div className="flex flex-row gap-5">
-        <div className="grow">
-          <Promo />
-        </div>
-        <div className="flex-none">
-          <UserSimpleInfo />
-        </div>
+      <div className="gird gap-5 h-[300px] bg-pink">
+        <Promo />
+        <UserSimpleInfo />
       </div>
       <div>
         <Filter />

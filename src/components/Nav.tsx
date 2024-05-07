@@ -24,9 +24,12 @@ function Nav() {
     <div className="container my-10 flex flex-row justify-between">
       <div className="flex flex-row gap-5">
         <div className="cursor-pointer">
-          <Link to={"/"}>로그</Link>
+          <Link to={"/"}>로고</Link>
         </div>
         <div>검색</div>
+        <div>
+          <Link to={"upload"}>개최하기</Link>
+        </div>
       </div>
       <div>{isLogin ? <Logout /> : <Login />}</div>
     </div>
@@ -44,7 +47,9 @@ function Logout() {
 
   return (
     <div className="flex flex-row gap-5">
-      <div>마이페이지</div>
+      <div>
+        <Link to={"mypage"}>마이페이지</Link>
+      </div>
       <button onClick={out} className="bg-blue">
         로그아웃
       </button>
