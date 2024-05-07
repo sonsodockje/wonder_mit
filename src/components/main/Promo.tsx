@@ -12,16 +12,14 @@ export default function Promo() {
   ];
 
   return (
-    <div className="max-w-lg bg-purple p-5 ">
-      <div className="">
-        <Swiper>
-          {data.map((data) => (
-            <SwiperSlide>
-              <PromoCard data={data} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+    <div className="p-5 border-[0.5px]">
+      <Swiper>
+        {data.map((data) => (
+          <SwiperSlide>
+            <PromoCard data={data} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 }

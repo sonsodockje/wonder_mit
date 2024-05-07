@@ -5,7 +5,7 @@ export default function UserSimpleInfo() {
 
   if (!isLogin) {
     return (
-      <div className="p-5  bg-blue">
+      <div className="p-5 border-[0.5px]">
         <p>로그인하세요</p>
       </div>
     );
@@ -17,7 +17,7 @@ export default function UserSimpleInfo() {
     const userData = JSON.parse(userDataString);
     // console.log(userData);
     return (
-      <div className="p-5 bg-blue">
+      <div className="p-5 border-[0.5px]">
         <p>{userData.displayName} 님</p>
         <img src={userData.photoURL} alt="" />
       </div>

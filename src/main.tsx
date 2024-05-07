@@ -9,6 +9,7 @@ import AuthPage from "./pages/AuthPage";
 import UploadPage from "./pages/UploadPage";
 import MyPage from "./pages/MyPage";
 import DetailPage from "./pages/DetailPage";
+import SearchPage from "./pages/SearchPage";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "detail/:id",
         element: <DetailPage />,
+      },
+      {
+        path: "search/:keyword",
+        element: <SearchPage />,
       },
     ],
   },

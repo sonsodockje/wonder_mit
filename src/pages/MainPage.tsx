@@ -6,9 +6,13 @@ import UserSimpleInfo from "../components/main/UserSimpleInfo";
 function MainPage() {
   return (
     <div>
-      <div className="gird gap-5 h-[300px] bg-pink">
-        <Promo />
-        <UserSimpleInfo />
+      <div className="grid grid-cols-4 gap-4 h-auto">
+        <div className="col-span-3">
+          <Promo />
+        </div>
+        <div className="col-span-1">
+          <UserSimpleInfo />
+        </div>
       </div>
       <div>
         <Filter />

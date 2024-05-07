@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useUserStore } from "../store/userInfo";
+import Search from "./main/Search";
 
 function Nav() {
   const [data, setData] = useState({});
@@ -11,7 +12,7 @@ function Nav() {
       const _data = localStorage.getItem("data");
 
       if (_data === null) {
-        return;
+        return null;
       }
 
       setData(JSON.parse(_data));
@@ -21,12 +22,12 @@ function Nav() {
   }, []);
 
   return (
-    <div className="container my-10 flex flex-row justify-between">
+    <div className="container mt-10 mb-5 p-5 flex flex-row justify-between border-[0.5px]">
       <div className="flex flex-row gap-5">
         <div className="cursor-pointer">
           <Link to={"/"}>로고</Link>
         </div>
-        <div>검색</div>
+        <Search />
         <div>
           <Link to={"upload"}>개최하기</Link>
         </div>
@@ -50,9 +51,7 @@ function Logout() {
       <div>
         <Link to={"mypage"}>마이페이지</Link>
       </div>
-      <button onClick={out} className="bg-blue">
-        로그아웃
-      </button>
+      <button onClick={out}>로그아웃</button>
     </div>
   );
 }
@@ -60,7 +59,7 @@ function Logout() {
 function Login() {
   return (
     <Link to={"/auth"}>
-      <button className="bg-blue">로그인</button>
+      <button>로그인</button>
     </Link>
   );
 }
