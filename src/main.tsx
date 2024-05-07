@@ -5,9 +5,9 @@ import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import AuthPage from "./components/LoginForm";
 import RootLayout from "./pages/RootLayout";
 import MainPage from "./pages/MainPage";
+import AuthPage from "./pages/AuthPage";
 
 const router = createBrowserRouter([
   {

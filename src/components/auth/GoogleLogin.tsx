@@ -1,7 +1,7 @@
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { useUserStore } from "../store/userInfo";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useUserStore } from "../../store/userInfo";
 
 function GoogleLogin() {
   const navigate = useNavigate();

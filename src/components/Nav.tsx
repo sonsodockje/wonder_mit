@@ -20,7 +20,17 @@ function Nav() {
     userLoginCheck();
   }, []);
 
-  return <p>{isLogin ? <Logout /> : <Login />}</p>;
+  return (
+    <div className="container my-10 flex flex-row justify-between">
+      <div className="flex flex-row gap-5">
+        <div className="cursor-pointer">
+          <Link to={"/"}>로그</Link>
+        </div>
+        <div>검색</div>
+      </div>
+      <div>{isLogin ? <Logout /> : <Login />}</div>
+    </div>
+  );
 }
 
 function Logout() {
@@ -31,14 +41,23 @@ function Logout() {
     isLgoinTolgle();
     localStorage.clear();
   }
-  return <button onClick={out}>로그아웃</button>;
+
+  return (
+    <div className="flex flex-row gap-5">
+      <div>마이페이지</div>
+      <button onClick={out} className="bg-blue">
+        로그아웃
+      </button>
+    </div>
+  );
 }
 
 function Login() {
   return (
     <Link to={"/auth"}>
-      <button>로그인</button>
+      <button className="bg-blue">로그인</button>
     </Link>
   );
 }
+
 export default Nav;
