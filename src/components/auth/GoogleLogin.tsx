@@ -51,7 +51,7 @@ function GoogleLogin() {
       onClick={(e) => login(e)}
       className="bg-primary-100 text-bg-100 rounded-md h-10"
     >
-      구글로 로그인
+      구글아이디로 로그인
     </button>
   );
 }
