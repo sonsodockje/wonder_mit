@@ -8,7 +8,7 @@ function UploadPage() {
 
   useEffect(() => {
     if (!isLogin) {
-      return navigate("auth");
+      return navigate("auth?mode=login");
     }
   }, []);
 

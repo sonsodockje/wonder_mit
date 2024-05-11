@@ -14,7 +14,8 @@ function GoogleLogin() {
   const provider = new GoogleAuthProvider();
   provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 
-  function login() {
+  function login(e: any) {
+    e.preventDefault();
     signInWithPopup(auth, provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
@@ -46,9 +47,12 @@ function GoogleLogin() {
   }, [isLogin, navigate]);
 
   return (
-    <div>
-      <button onClick={login}>구글로 로그인</button>
-    </div>
+    <button
+      onClick={(e) => login(e)}
+      className="bg-primary-100 text-bg-100 rounded-md h-10"
+    >
+      구글로 로그인
+    </button>
   );
 }
 

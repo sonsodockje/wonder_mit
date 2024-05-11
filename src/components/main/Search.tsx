@@ -3,14 +3,16 @@ import useSearchStore from "../../store/useSearch";
 import { useState } from "react";
 
 function Search() {
-  const navitate = useNavigate();
+  const navigate = useNavigate();
   const setKeyword = useSearchStore((state: any) => state.setKeyword);
   const [searchValue, setSearchValue] = useState("");
 
   const handleSearch = () => {
     setKeyword(searchValue);
     setSearchValue("");
-    return navitate(`/search/${searchValue}`);
+    const keyword = encodeURIComponent(searchValue);
+    return navigate(`/search?keyword=${keyword}`);
+    //   return navigate(`/search?keyword=${searchValue}`);
   };
 
   return (

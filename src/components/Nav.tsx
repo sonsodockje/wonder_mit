@@ -58,7 +58,7 @@ function Logout() {
 
 function Login() {
   return (
-    <Link to={"/auth"}>
+    <Link to={"/auth?mode=login"}>
       <button>로그인</button>
     </Link>
   );

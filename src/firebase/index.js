@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD8KiQ6S4XqSaM_5XhduY9JaIE5Am3o3UA",
-  authDomain: "wonder-mit.firebaseapp.com",
-  projectId: "wonder-mit",
-  storageBucket: "wonder-mit.appspot.com",
-  messagingSenderId: "644827001616",
-  appId: "1:644827001616:web:427a577042fa6d9bad2b95",
+  apiKey: "AIzaSyDYEHIyKYdg1f159ngvh7U8DDOSheaLrzs",
+  authDomain: "wondermit-dd72d.firebaseapp.com",
+  projectId: "wondermit-dd72d",
+  storageBucket: "wondermit-dd72d.appspot.com",
+  messagingSenderId: "552542445190",
+  appId: "1:552542445190:web:6b9f274c3fc3254acd7b07",
 };
 
 // Initialize Firebase

@@ -1,11 +1,12 @@
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 function SearchPage() {
-  const keyword = useParams().keyword;
+  const keyword = useSearchParams()[0];
+  const value = keyword.get("keyword") || "";
 
   return (
     <div>
-      <div>"{keyword}" 의 검색결과</div>
+      <p>"{value}" 의 검색결과</p>
     </div>
   );
 }
