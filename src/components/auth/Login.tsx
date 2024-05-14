@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import GoogleLogin from "./GoogleLogin";
+
 
 export default function Login() {
   const navigate = useNavigate();
@@ -10,7 +12,7 @@ export default function Login() {
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-  function isValidEmail(email) {
+  function isValidEmail(email: string) {
     var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
   }
@@ -24,16 +26,16 @@ export default function Login() {
   }
 
   return (
-    <>
+    <div className="flex flex-col w-[80%] mx-auto gap-4">
       <input
         type="email"
         placeholder="이메일"
-        className="rounded-md h-10 bg-bg-200 px-4  text-sm"
+        className=" h-13 border-2 w-full border-color-pink2 p-4 rounded-2xl  text-sm focus:outline-color-point-pink"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       {!isValidEmail(email) && email.length ? (
-        <p className="text-gray-dark text-xs ml-3 mb-3">
+        <p className="text-gray-dark text-xs ml-3 mb-3 -mt-3 text-color-point-navy font-medium">
           이메일 형식이 아닙니다.
         </p>
       ) : null}
@@ -41,13 +43,14 @@ export default function Login() {
         <input
           type={showPassword ? "text" : "password"}
           placeholder="비밀번호"
-          className="rounded-md h-10 bg-bg-200 px-4  w-full text-sm"
+          className=" bg-bg-200 p-4  w-full text-sm h-13 border-2 border-color-pink2 rounded-2xl focus:outline-color-point-pink"
+
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <p
           onClick={handleClickShowPassword}
-          className="cursor-pointer absolute right-4 top-2.5 text-gray text-sm"
+          className="cursor-pointer absolute right-4 top-[18px] text-gray text-sm text-color-point-pink font-semibold"
         >
           {showPassword ? "비밀번호 가리기" : "비밀번호 보기"}
         </p>
@@ -55,11 +58,12 @@ export default function Login() {
 
       <button
         onClick={(e) => handleLogin(e)}
-        className="bg-primary-200 text-bg-100 rounded-md h-10 disabled:cursor-not-allowed disabled:bg-gray-light"
+        className="bg-color-point-pink mt-5 mb-1 text-color-white rounded-2xl h-14 disabled:cursor-not-allowed disabled:bg-color-pink1"
         disabled={!isValidEmail(email)}
       >
         로그인
       </button>
-    </>
+      <GoogleLogin />
+    </div>
   );
 }

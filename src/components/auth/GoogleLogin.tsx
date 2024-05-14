@@ -47,12 +47,10 @@ function GoogleLogin() {
   }, [isLogin, navigate]);
 
   return (
-    <button
-      onClick={(e) => login(e)}
-      className="bg-primary-100 text-bg-100 rounded-md h-10"
-    >
-      구글아이디로 로그인
-    </button>
+     <img src="google-login.png" alt=""  
+     className="w-5/12 mx-auto cursor-pointer"
+     onClick={(e) => login(e)}/>
+
   );
 }
 

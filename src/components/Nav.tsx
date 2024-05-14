@@ -27,11 +27,11 @@ function Nav() {
       <div className="flex flex-row gap-10 items-center">
         <div className="cursor-pointer">
           <Link to={"/"}>
-            <img src="logo.png" alt="" className="h-4 mt-0.5" />
+            <img src="logo.png" alt="" className="h-5 mt-0.5" />
           </Link>
         </div>
         <div>
-          <Link to={"upload"} className="text-color-point-pink">
+          <Link to={"upload"} className="text-color-point-pink font-bold text-sm">
             행사 개최하기
           </Link>
         </div>
@@ -74,11 +74,20 @@ function Logout() {
 
 function Login() {
   return (
+    <>
     <Link to={"/auth?mode=login"}>
       <button className="bg-color-point-pink text-color-white  px-3 py-2 rounded-lg">
         로그인
       </button>
+      
     </Link>
+    <Link to={"/auth?mode=signup"}>
+      <button className="bg-color-point-pink text-color-white  px-3 py-2 rounded-lg">
+       회원가입
+      </button>
+      
+    </Link>
+    </>
   );
 }
 
