@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -15,3 +16,19 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+export function handleFirebaseLogin(userinfo) {
+  const auth = getAuth();
+  signInWithEmailAndPassword(auth, userinfo.email, userinfo.password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      console.log("로그인 완", user);
+      return navigate("/");
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+    });
+}

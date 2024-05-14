@@ -8,6 +8,7 @@ export default function Signup() {
   const [email, setEmail] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
+  
 
   function isValidEmail(email: string) {
     var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -26,13 +27,6 @@ export default function Signup() {
     e.preventDefault();
     return navigate("auth?mode=login");
   }
-
-  // console.log(
-  //   isValidEmail(email) &&
-  //     isSame(password1, password2) &&
-  //     password2.length > 1 &&
-  //     name.length > 1
-  // );
 
   return (
     <div className=" flex flex-col gap-4 mx-auto w-[80%]">
@@ -101,7 +95,6 @@ export default function Signup() {
         {/* <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG</p> */}
           <label className="block h-13 cursor-pointer bg-color-point-pink text-color-white p-4 px-16 rounded-2xl  text-sm" htmlFor="file_input">프로필 사진 선택</label>
           <input className="hidden"  id="file_input" type="file"/>
-          
         </div>
         
       </div>

@@ -1,10 +1,15 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import GoogleLogin from "./GoogleLogin";
 
+import GoogleLogin from "./GoogleLogin";
+import { handleFirebaseLogin } from "../../firebase/index.js"
+import { useUserStore } from "../../store/userInfo.js";
 
 export default function Login() {
-  const navigate = useNavigate();
+
+  const isLgoinTolgle = useUserStore((state: any) => state.login);
+  const isLogin = useUserStore((state: any) => state.isLogin);
+
+
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,12 +22,18 @@ export default function Login() {
     return emailRegex.test(email);
   }
 
+
   function handleLogin(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void {
     e.preventDefault();
-    // 여기서 다른 작업을 수행하거나 필요한 함수를 호출할 수 있습니다.
-    return navigate("/");
+  const userData = {
+    email: email,
+    password: password
+  }
+    handleFirebaseLogin(userData)
+    isLgoinTolgle();
+   
   }
 
   return (
