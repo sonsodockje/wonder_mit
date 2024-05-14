@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useUserStore } from "../store/userInfo";
 import Search from "./main/Search";
+import { FaRegUser } from "react-icons/fa";
 
 function Nav() {
   const [data, setData] = useState({});
@@ -22,17 +23,23 @@ function Nav() {
   }, []);
 
   return (
-    <div className="container mt-10 mb-5 p-5 flex flex-row justify-between border-[0.5px]">
-      <div className="flex flex-row gap-5">
+    <div className="container mt-10 mb-5 flex flex-row justify-between items-center">
+      <div className="flex flex-row gap-10 items-center">
         <div className="cursor-pointer">
-          <Link to={"/"}>로고</Link>
+          <Link to={"/"}>
+            <img src="logo.png" alt="" className="h-4 mt-0.5" />
+          </Link>
         </div>
-        <Search />
         <div>
-          <Link to={"upload"}>개최하기</Link>
+          <Link to={"upload"} className="text-color-point-pink">
+            행사 개최하기
+          </Link>
         </div>
       </div>
-      <div>{isLogin ? <Logout /> : <Login />}</div>
+      <div className="flex flex-row gap-2 items-center">
+        <Search />
+        {isLogin ? <Logout /> : <Login />}
+      </div>
     </div>
   );
 }
@@ -47,11 +54,20 @@ function Logout() {
   }
 
   return (
-    <div className="flex flex-row gap-5">
+    <div className="flex flex-row gap-2 items-center ">
       <div>
-        <Link to={"mypage"}>마이페이지</Link>
+        <Link to={"mypage"}>
+          <button className="bg-color-point-pink p-3 text-color-white rounded-lg">
+            <FaRegUser />
+          </button>
+        </Link>
       </div>
-      <button onClick={out}>로그아웃</button>
+      <button
+        onClick={out}
+        className="bg-color-point-pink text-color-white  px-3 py-2 rounded-lg"
+      >
+        로그아웃
+      </button>
     </div>
   );
 }
@@ -59,7 +75,9 @@ function Logout() {
 function Login() {
   return (
     <Link to={"/auth?mode=login"}>
-      <button>로그인</button>
+      <button className="bg-color-point-pink text-color-white  px-3 py-2 rounded-lg">
+        로그인
+      </button>
     </Link>
   );
 }

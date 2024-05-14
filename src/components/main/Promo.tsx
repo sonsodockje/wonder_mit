@@ -12,7 +12,7 @@ export default function Promo() {
   ];
 
   return (
-    <div className="p-5 border-[0.5px]">
+    <div className="overflow-hidden rounded-lg h-auto">
       <Swiper>
         {data.map((data) => (
           <SwiperSlide>
@@ -25,7 +25,11 @@ export default function Promo() {
 }
 
 function PromoCard({ data }: any) {
-  return <p>{data.name}</p>;
+  return (
+    <div className="bg-color-pink1 p-5 h-[300px]">
+      <p>{data.name}</p>
+    </div>
+  );
 }
 
 // https://swiperjs.com/react

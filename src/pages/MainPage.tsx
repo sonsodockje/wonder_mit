@@ -1,4 +1,5 @@
 import Card from "../components/main/Card";
+import Cards from "../components/main/Cards";
 import Filter from "../components/main/Filter";
 import Promo from "../components/main/Promo";
 import UserSimpleInfo from "../components/main/UserSimpleInfo";
@@ -18,7 +19,7 @@ function MainPage() {
         <Filter />
       </div>
       <div>
-        <Card />
+        <Cards />
       </div>
     </div>
   );

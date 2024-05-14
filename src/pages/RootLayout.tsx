@@ -3,10 +3,13 @@ import Nav from "../components/Nav";
 
 const RootLayout = () => {
   return (
-    <div className="container mx-auto">
-      <Nav />
-      <Outlet />
-    </div>
+    <>
+      <div className="container mx-auto">
+        <Nav />
+        <Outlet />
+      </div>
+      <div>푸터</div>
+    </>
   );
 };
 
