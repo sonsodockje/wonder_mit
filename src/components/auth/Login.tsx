@@ -1,15 +1,11 @@
 import { useState } from "react";
 
 import GoogleLogin from "./GoogleLogin";
-import { handleFirebaseLogin } from "../../firebase/index.js"
+import { handleFirebaseLogin } from "../../firebase/index.tsx";
 import { useUserStore } from "../../store/userInfo.js";
 
 export default function Login() {
-
   const isLgoinTolgle = useUserStore((state: any) => state.login);
-  const isLogin = useUserStore((state: any) => state.isLogin);
-
-
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,18 +18,21 @@ export default function Login() {
     return emailRegex.test(email);
   }
 
-
-  function handleLogin(
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ): void {
+  function handleLogin(e: any) {
     e.preventDefault();
-  const userData = {
-    email: email,
-    password: password
-  }
+    const userData = {
+      email: email,
+      password: password,
+    };
     handleFirebaseLogin(userData)
-    isLgoinTolgle();
-   
+      .then((result) => {
+        if (result) {
+          isLgoinTolgle();
+        }
+      })
+      .catch((error) => {
+        console.error("로그인 에러:", error);
+      });
   }
 
   return (
@@ -41,7 +40,7 @@ export default function Login() {
       <input
         type="email"
         placeholder="이메일"
-        className=" h-13 border-2 w-full border-color-pink2 p-4 rounded-2xl  text-sm focus:outline-color-point-pink"
+        className=" h-13 border-2 w-full border-color-pink2 p-4 rounded-2xl  text-sm focus:outline-color-point-pink outline-none"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
@@ -54,8 +53,7 @@ export default function Login() {
         <input
           type={showPassword ? "text" : "password"}
           placeholder="비밀번호"
-          className=" bg-bg-200 p-4  w-full text-sm h-13 border-2 border-color-pink2 rounded-2xl focus:outline-color-point-pink"
-
+          className=" bg-bg-200 p-4  w-full text-sm h-13 border-2 border-color-pink2 rounded-2xl focus:outline-color-point-pink outline-none"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -70,7 +68,7 @@ export default function Login() {
       <button
         onClick={(e) => handleLogin(e)}
         className="bg-color-point-pink mt-5 mb-1 text-color-white rounded-2xl h-14 disabled:cursor-not-allowed disabled:bg-color-pink1"
-        disabled={!isValidEmail(email)}
+        disabled={!isValidEmail(email) || !(password.length > 0)}
       >
         로그인
       </button>

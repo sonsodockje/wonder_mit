@@ -21,11 +21,13 @@ function GoogleLogin() {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
-        token && sessionStorage.setItem("user", token.toString());
+        token &&
+          sessionStorage.setItem("googleLoginUserInfo", token.toString());
+        token && localStorage.setItem("googleLoginUserInfo", token.toString());
         const user = result.user;
         console.log(user);
+        user && localStorage.setItem("loginUserInfo", JSON.stringify(user));
         isLgoinTolgle();
-        user && localStorage.setItem("data", JSON.stringify(user));
       })
       .catch((error) => {
         // Handle Errors here.
@@ -47,10 +49,12 @@ function GoogleLogin() {
   }, [isLogin, navigate]);
 
   return (
-     <img src="google-login.png" alt=""  
-     className="w-5/12 mx-auto cursor-pointer"
-     onClick={(e) => login(e)}/>
-
+    <img
+      src="google-login.png"
+      alt=""
+      className="w-5/12 mx-auto cursor-pointer"
+      onClick={(e) => login(e)}
+    />
   );
 }
 
