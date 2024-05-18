@@ -1,10 +1,14 @@
 import { useState } from "react";
-import { handleProflieImg } from "../../firebase";
+import { handleProflieImg, handleSignUp_ } from "../../firebase";
+
+import { useNavigate } from "react-router-dom";
 
 // import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
   // const navigate = useNavigate();
+
+  let navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -40,18 +44,42 @@ export default function Signup() {
   ): Promise<void> {
     e.preventDefault();
 
-    // 프로필 사진 업로드
+    // Profile picture upload
     if (file !== null && file.name !== null) {
       try {
         const url = await handleProflieImg(file, file.name);
-        console.log("다운로드 URL:", url);
-      } catch (error) {
-        console.error("프로필 사진 업로드 오류:", error);
-      }
-    }
+        console.log("Download URL:", url);
 
-    // return navigate("auth?mode=login");
+        // Preparing user data for signup
+        const data = {
+          name: name,
+          email: email,
+          password: password1,
+          number: number,
+          interested: interested,
+          photo: url,
+        };
+
+        // Handling signup and checking the return value
+        const signupSuccess = await handleSignUp_(data);
+
+        if (signupSuccess) {
+          // Navigate to login page upon successful signup
+          alert("회원가입 성공 ^0^");
+
+          navigate("?mode=login");
+        } else {
+          // Handle signup failure (optional)
+          console.error("Signup failed. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error uploading profile picture:", error);
+      }
+    } else {
+      console.warn("No profile picture selected.");
+    }
   }
+
   return (
     <div className=" flex flex-col gap-4 mx-auto w-[80%]">
       <input
@@ -61,7 +89,6 @@ export default function Signup() {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <button onClick={handleSignup}>체스트</button>
 
       <input
         type="text"

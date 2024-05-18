@@ -1,5 +1,9 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const firebaseConfig = {
@@ -67,3 +71,22 @@ export function handleProflieImg(
       });
   });
 }
+
+// export function handleSignUp_(data: any): Promise<boolean> {
+//   const auth = getAuth();
+
+//   return createUserWithEmailAndPassword(auth, data.email, data.password)
+//     .then((userCredential) => {
+//       const user = userCredential.user;
+//       console.log(user);
+//       // 데이터 베이스에 저장하기
+
+//       return true;
+//     })
+//     .catch((error) => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       console.log(errorMessage);
+//       return false;
+//     });
+// }
