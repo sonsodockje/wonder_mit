@@ -8,7 +8,7 @@ const RootLayout = () => {
         <Nav />
         <Outlet />
       </div>
-      <div>푸터</div>
+      <div className=" bg-color-blue">푸터</div>
     </>
   );
 };

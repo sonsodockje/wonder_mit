@@ -8,12 +8,13 @@ function Search() {
   const setKeyword = useSearchStore((state: any) => state.setKeyword);
   const [searchValue, setSearchValue] = useState("");
 
-  const handleSearch = () => {
+  const handleSearch = (keyword: string) => {
+    console.log(searchValue);
+
     setKeyword(searchValue);
     setSearchValue("");
-    const keyword = encodeURIComponent(searchValue);
+    // const keyword = encodeURIComponent(searchValue);
     return navigate(`/search?keyword=${keyword}`);
-    //   return navigate(`/search?keyword=${searchValue}`);
   };
 
   return (
@@ -25,8 +26,9 @@ function Search() {
         onChange={(e) => setSearchValue(e.target.value)}
         onKeyDown={(e) => {
           if (e.code == "Enter") {
-            setKeyword(searchValue);
-            handleSearch();
+            console.log(searchValue);
+
+            handleSearch(searchValue);
           }
         }}
         className=" border-color-point-pink border text-sm p-2 rounded-lg mr-3 pl-10 focus:outline-none md:w-72 w-24"

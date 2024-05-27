@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDYEHIyKYdg1f159ngvh7U8DDOSheaLrzs",
@@ -16,6 +17,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
 const storage = getStorage();
 
 export function handleFirebaseLogin(userinfo: any): Promise<boolean> {
@@ -72,21 +74,21 @@ export function handleProflieImg(
   });
 }
 
-// export function handleSignUp_(data: any): Promise<boolean> {
-//   const auth = getAuth();
+export function handleSignUp_(data: any): Promise<boolean> {
+  const auth = getAuth();
 
-//   return createUserWithEmailAndPassword(auth, data.email, data.password)
-//     .then((userCredential) => {
-//       const user = userCredential.user;
-//       console.log(user);
-//       // 데이터 베이스에 저장하기
+  return createUserWithEmailAndPassword(auth, data.email, data.password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log(user);
+      // 데이터 베이스에 저장하기
 
-//       return true;
-//     })
-//     .catch((error) => {
-//       const errorCode = error.code;
-//       const errorMessage = error.message;
-//       console.log(errorMessage);
-//       return false;
-//     });
-// }
+      return true;
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorMessage);
+      return false;
+    });
+}

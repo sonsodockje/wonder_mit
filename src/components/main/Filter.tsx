@@ -40,7 +40,7 @@ export default function Filter() {
     },
   ];
   return (
-    <div className="flex flex-row py-5 my-3 justify-between">
+    <div className="flex flex-row py-3 my-3 justify-between">
       {data.map((item) => (
         <CircleName text={item.text} />
       ))}
