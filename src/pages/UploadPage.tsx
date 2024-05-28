@@ -43,12 +43,11 @@ function UploadPage() {
       </div>
       <div className="mt-8 mb-8">
         <p>날짜</p>
-        <div className="border rounded-2xl p-12 "></div>
+        <div className="border rounded-2xl p-12 ">
+          <input type="date" /> ~ <input type="date" />
+        </div>
       </div>
-      <div className="mt-8 mb-8">
-        <p>결제</p>
-        <div className="border rounded-2xl p-12 "></div>
-      </div>
+
       <div className="mt-8 mb-8">
         <p>주소</p>
         <div className="border rounded-2xl p-12 ">
@@ -57,11 +56,15 @@ function UploadPage() {
       </div>
       <div className="mt-8 mb-8">
         <p>참가비</p>
-        <div className="border rounded-2xl p-12 "></div>
+        <div className="border rounded-2xl p-12 ">
+          <input type="text" /> 원
+        </div>
       </div>
       <div className="mt-8 mb-8">
         <p>참가자 칭호</p>
-        <div className="border rounded-2xl p-12 "></div>
+        <div className="border rounded-2xl p-12 ">
+          <input type="text" /> <button>확인</button>
+        </div>
       </div>
       <button className="bg-color-point-pink text-color-white  px-3 py-2 rounded-lg">
         미리보기

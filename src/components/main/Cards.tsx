@@ -88,10 +88,12 @@ export default function Cards() {
 }
 
 function Card({ data }) {
+  const formatToKRW = (num) => num.toLocaleString("ko-KR");
+
   return (
     <div className="flex gap-8">
       {data.map((event) => (
-        <Link to={`detail/${event.id}`}>
+        <Link to={`detail?id=${event.id}`}>
           <div className=" w-[280px] " key={event.id}>
             <img
               className="object-cover object-center w-full h-[150px] rounded-xl mb-2"
@@ -100,7 +102,9 @@ function Card({ data }) {
             />
             <div className="flex justify-between font-bold">
               <p>{event.data.name}</p>
-              <p>{event.data.money}</p>
+              <p className="tracking-tight">
+                {formatToKRW(event.data.money)} 원
+              </p>
             </div>
             <div className="text-color-pink3 flex gap-3">
               {/* <p>{event.data.date}</p> */}
